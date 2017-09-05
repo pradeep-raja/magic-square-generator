@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Magic Square Generator</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+    <script src="magic-square-generator.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="magic-square-generator.css"></link>
+</head>
+
+<body ng-app="magic-square">
+    <div class="wrapper">
+        <div class="container" ng-controller="MagicSquareController">
+            <div class="page-header">
+                <h1>Magic Square Generator</h1>
+            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input class="form-control" style="margin-right:40px;" id="id-magic" ng-model="imagic" placeholder="">
+                        </td>
+                        <td>
+                            &nbsp;<button class="btn btn-default" ng-click="onGenerate()">Generate</button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+            <div ng-show="odd" class="alert alert-warning" role="alert">Enter odd number</div>
+            <div ng-show="big" class="alert alert-warning" role="alert">Enter 91 or below </div>
+            <div ng-show="invalid" class="alert alert-warning" role="alert">Enter valid number</div>
+
+            <div style="margin-top:6px;margin-left:9px;margin-bottom:-10px"></div>
+
+            <table id="id-table" ng-show="!odd && !big && !invalid" border="1" class="stable">
+                <tbody>
+                    <tr ng-repeat="d in arr track by $index">
+                        <td ng-repeat="e in d track by $index">{{e}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
